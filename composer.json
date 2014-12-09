@@ -1,0 +1,33 @@
+{
+    "name": "polymorph-project/user",
+    "type": "library",
+    "description": "Polymorph User Component",
+    "keywords": [],
+    "homepage": "http://polymorph-project.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mlanawo Mbechezi",
+            "email": "fabien@symfony.com"
+        },
+        {
+            "name": "Polymorph Community",
+            "homepage": "http://symfony.com/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/common": "~2.2",
+        "symfony/security": "~2.3"
+    },
+
+    "autoload": {
+        "psr-4": { "Polymorph\\Component\\User\\": "" }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        }
+    }
+}
