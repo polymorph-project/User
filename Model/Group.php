@@ -19,11 +19,17 @@ abstract class Group implements GroupInterface
     protected $id;
     protected $name;
     protected $roles;
+    protected $users;
 
     public function __construct($name, $roles = array())
     {
         $this->name = $name;
         $this->roles = $roles;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
