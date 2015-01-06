@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Mlanawo Mbechezi",
-            "email": "fabien@symfony.com"
+            "email": "mlanawo.mbechezi@ikimea.com"
         },
         {
             "name": "Polymorph Community",
@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.4",
         "doctrine/common": "~2.2",
         "symfony/security": "~2.3"
     },
