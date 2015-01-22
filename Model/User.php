@@ -19,9 +19,12 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Mlanawo Mbechezi <mlanawo.mbechezi@ikimea.com>
  */
 abstract class User implements UserInterface, GroupableInterface
 {
+    const ROLE_DEFAULT  = 'ROLE_USER';
+
     protected $id;
 
     /**
@@ -33,6 +36,11 @@ abstract class User implements UserInterface, GroupableInterface
      * @var string
      */
     protected $usernameCanonical;
+
+    /**
+     * @var string
+     */
+    protected $slug;
 
     /**
      * @var string
@@ -378,8 +386,22 @@ abstract class User implements UserInterface, GroupableInterface
     public function setUsernameCanonical($usernameCanonical)
     {
         $this->usernameCanonical = $usernameCanonical;
+        $this->slug = $usernameCanonical;
 
         return $this;
+    }
+
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
