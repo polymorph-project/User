@@ -23,8 +23,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 abstract class User implements UserInterface, GroupableInterface
 {
-    const ROLE_DEFAULT  = 'ROLE_USER';
-
     protected $id;
 
     /**
