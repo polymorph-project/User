@@ -25,7 +25,6 @@ abstract class User implements UserInterface, GroupableInterface
 {
     const ROLE_DEFAULT  = 'ROLE_USER';
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
-
     protected $id;
 
     /**
