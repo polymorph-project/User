@@ -482,6 +482,13 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
     public function setSuperAdmin($boolean)
     {
         if (true === $boolean) {
