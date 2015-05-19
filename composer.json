@@ -12,7 +12,7 @@
         },
         {
             "name": "Polymorph Community",
-            "homepage": "http://symfony.com/contributors"
+          "homepage": "http://github.com/polymorph-project/polymorph/contributors"
         }
     ],
     "require": {
