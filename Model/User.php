@@ -25,6 +25,10 @@ abstract class User implements UserInterface, GroupableInterface
 {
     const ROLE_DEFAULT  = 'ROLE_USER';
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+
+    /**
+     * @var int
+     */
     protected $id;
 
     /**
@@ -35,22 +39,12 @@ abstract class User implements UserInterface, GroupableInterface
     /**
      * @var string
      */
-    protected $usernameCanonical;
-
-    /**
-     * @var string
-     */
     protected $slug;
 
     /**
      * @var string
      */
     protected $email;
-
-    /**
-     * @var string
-     */
-    protected $emailCanonical;
 
     /**
      * @var boolean
@@ -116,6 +110,16 @@ abstract class User implements UserInterface, GroupableInterface
     protected $expiresAt;
 
     /**
+     * @var \DateTime
+     */
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    protected $updatedAt;
+
+    /**
      * @var array
      */
     protected $roles;
@@ -138,6 +142,8 @@ abstract class User implements UserInterface, GroupableInterface
         $this->expired = false;
         $this->roles = array();
         $this->credentialsExpired = false;
+        $this->createdAt = \DateTime();
+        $this->updatedAt = \DateTime();
     }
 
     public function addRole($role)
@@ -166,7 +172,7 @@ abstract class User implements UserInterface, GroupableInterface
         return serialize(array(
             $this->password,
             $this->salt,
-            $this->usernameCanonical,
+            $this->slug,
             $this->username,
             $this->expired,
             $this->locked,
@@ -191,7 +197,7 @@ abstract class User implements UserInterface, GroupableInterface
         list(
             $this->password,
             $this->salt,
-            $this->usernameCanonical,
+            $this->salt,
             $this->username,
             $this->expired,
             $this->locked,
@@ -224,11 +230,6 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->username;
     }
 
-    public function getUsernameCanonical()
-    {
-        return $this->usernameCanonical;
-    }
-
     public function getSalt()
     {
         return $this->salt;
@@ -237,11 +238,6 @@ abstract class User implements UserInterface, GroupableInterface
     public function getEmail()
     {
         return $this->email;
-    }
-
-    public function getEmailCanonical()
-    {
-        return $this->emailCanonical;
     }
 
     /**
@@ -383,15 +379,6 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
-    public function setUsernameCanonical($usernameCanonical)
-    {
-        $this->usernameCanonical = $usernameCanonical;
-        $this->slug = $usernameCanonical;
-
-        return $this;
-    }
-
-
     public function setSlug($slug)
     {
         $this->slug = $slug;
@@ -428,6 +415,38 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreatedAt($createdAt)
+    {
+        return $this->createdAt = $createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
     public function setEmail($email)
     {
         $this->email = $email;
@@ -435,12 +454,6 @@ abstract class User implements UserInterface, GroupableInterface
         return $this;
     }
 
-    public function setEmailCanonical($emailCanonical)
-    {
-        $this->emailCanonical = $emailCanonical;
-
-        return $this;
-    }
 
     public function setEnabled($boolean)
     {

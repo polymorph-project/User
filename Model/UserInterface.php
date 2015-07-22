@@ -33,16 +33,16 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      *
      * @return string
      */
-    public function getUsernameCanonical();
+    public function getSlug();
 
     /**
      * Sets the canonical username.
      *
-     * @param string $usernameCanonical
+     * @param string $slug
      *
      * @return self
      */
-    public function setUsernameCanonical($usernameCanonical);
+    public function setSlug($slug);
 
     /**
      * Gets email.
@@ -59,22 +59,6 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      * @return self
      */
     public function setEmail($email);
-
-    /**
-     * Gets the canonical email in search and sort queries.
-     *
-     * @return string
-     */
-    public function getEmailCanonical();
-
-    /**
-     * Set the canonical email.
-     *
-     * @param string $emailCanonical
-     *
-     * @return self
-     */
-    public function setEmailCanonical($emailCanonical);
 
     /**
      * Gets the plain password.
@@ -182,7 +166,7 @@ interface UserInterface extends AdvancedUserInterface, \Serializable
      * Use the SecurityContext, or an implementation of AccessDecisionManager
      * instead, e.g.
      *
-     *         $securityContext->isGranted('ROLE_USER');
+     * $securityContext->isGranted('ROLE_USER');
      *
      * @param string $role
      *
