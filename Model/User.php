@@ -142,8 +142,8 @@ abstract class User implements UserInterface, GroupableInterface
         $this->expired = false;
         $this->roles = array();
         $this->credentialsExpired = false;
-        $this->createdAt = \DateTime();
-        $this->updatedAt = \DateTime();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function addRole($role)
