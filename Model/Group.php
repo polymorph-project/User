@@ -16,14 +16,28 @@ namespace Polymorph\Component\User\Model;
  */
 abstract class Group implements GroupInterface
 {
+    /**
+     * @var int
+     */
     protected $id;
+
+    /**
+     * @var string
+     */
     protected $name;
+
+    /**
+     * @var array
+     */
     protected $roles;
+
+    /**
+     * @var array
+     */
     protected $users;
 
-    public function __construct($name, $roles = array())
+    public function __construct($roles = array())
     {
-        $this->name = $name;
         $this->roles = $roles;
     }
 
