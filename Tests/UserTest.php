@@ -17,7 +17,7 @@ use Polymorph\Component\User\Model\User;
 
 class UserTest extends TestCase
 {
-    const EMAIL = 'demo@polymorph.com';
+    public const EMAIL = 'demo@polymorph.com';
 
     public function testSetAutomaticallyMain()
     {
