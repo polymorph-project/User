@@ -48,7 +48,7 @@ abstract class Group implements GroupInterface
 
     public function __construct($roles = [])
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
         $this->roles = $roles;
     }
 
@@ -126,7 +126,7 @@ abstract class Group implements GroupInterface
     /**
      * @return Group
      */
-    public function setRoles(array $roles)
+    public function setRoles(array $roles): Group
     {
         $this->roles = $roles;
 
@@ -136,11 +136,6 @@ abstract class Group implements GroupInterface
     public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
-    {
-        $this->createdAt = $createdAt;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface

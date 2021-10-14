@@ -39,7 +39,7 @@ abstract class Email
     {
         $this->email = $email;
         $this->main = false;
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId()
@@ -90,11 +90,6 @@ abstract class Email
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
     }
 
     public function getUser(): User
