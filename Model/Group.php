@@ -123,10 +123,7 @@ abstract class Group implements GroupInterface
         return $this;
     }
 
-    /**
-     * @return Group
-     */
-    public function setRoles(array $roles): Group
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 

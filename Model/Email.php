@@ -14,21 +14,9 @@ namespace Polymorph\Component\User\Model;
 abstract class Email
 {
     protected $id;
-
-    /**
-     * @var bool
-     */
-    protected $main;
-
-    /**
-     * @var string
-     */
-    protected $email;
-
-    /**
-     * @var \DateTime
-     */
-    protected $createdAt;
+    protected \DateTimeInterface $createdAt;
+    protected bool $main;
+    protected string $email;
 
     /**
      * @var User
@@ -47,14 +35,9 @@ abstract class Email
         return $this->id;
     }
 
-    /**
-     * @return Email
-     */
-    public function setId($id)
+    public function getCreatedAt(): \DateTimeInterface
     {
-        $this->id = $id;
-
-        return $this;
+        return $this->createdAt;
     }
 
     public function isMain(): bool
@@ -62,9 +45,6 @@ abstract class Email
         return $this->main;
     }
 
-    /**
-     * @return Email
-     */
     public function setMain(bool $main): self
     {
         $this->main = $main;
@@ -77,19 +57,11 @@ abstract class Email
         return $this->email;
     }
 
-    /**
-     * @return Email
-     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
-    }
-
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
     }
 
     public function getUser(): User
