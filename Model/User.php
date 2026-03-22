@@ -13,13 +13,14 @@ namespace Polymorph\Component\User\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * Storage agnostic user object.
  *
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@kemeter.io>
  */
-abstract class User implements UserInterface, GroupableInterface
+abstract class User implements UserInterface, GroupableInterface, PasswordAuthenticatedUserInterface
 {
     public const ROLE_DEFAULT = 'ROLE_USER';
     public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
@@ -173,6 +174,11 @@ abstract class User implements UserInterface, GroupableInterface
     public function eraseCredentials(): void
     {
         $this->plainPassword = null;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->username ?? '';
     }
 
     public function getUsername(): ?string
