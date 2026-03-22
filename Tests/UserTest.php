@@ -19,7 +19,7 @@ class UserTest extends TestCase
 {
     public const EMAIL = 'demo@polymorph.com';
 
-    public function testSetAutomaticallyMain()
+    public function testSetAutomaticallyMain(): void
     {
         $user = new UserEntity();
         $user->addEmail(new EmailEntity(self::EMAIL));
@@ -27,7 +27,7 @@ class UserTest extends TestCase
         $this->assertSame($user->getEmail(), self::EMAIL);
     }
 
-    public function testMain()
+    public function testMain(): void
     {
         $email = new EmailEntity(self::EMAIL);
         $email->setMain(true);
