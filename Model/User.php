@@ -140,7 +140,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         $this->expired = false;
         $this->roles = [];
         $this->credentialsExpired = false;
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTime();
         $this->emails = new ArrayCollection();
     }
