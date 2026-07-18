@@ -180,6 +180,11 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->username;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->username ?? '';
+    }
+
     public function getSalt(): ?string
     {
         return $this->salt;
