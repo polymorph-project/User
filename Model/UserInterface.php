@@ -107,7 +107,7 @@ interface UserInterface extends BaseUserInterface
      *
      * @return self
      */
-    public function setPasswordRequestedAt(\DateTimeInterface $date = null);
+    public function setPasswordRequestedAt(?\DateTimeInterface $date = null);
 
     /**
      * Checks whether the password reset request has expired.
@@ -125,7 +125,7 @@ interface UserInterface extends BaseUserInterface
      *
      * @return self
      */
-    public function setLastLogin(\DateTimeInterface $time = null);
+    public function setLastLogin(?\DateTimeInterface $time = null);
 
     /**
      * Never use this to check if this user has access to anything!
