@@ -62,7 +62,7 @@ abstract class Group implements GroupInterface
      *
      * @return Group
      */
-    public function addRole($role)
+    public function addRole($role): Group
     {
         if (!$this->hasRole($role)) {
             $this->roles[] = mb_strtoupper($role);
@@ -71,12 +71,12 @@ abstract class Group implements GroupInterface
         return $this;
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -86,7 +86,7 @@ abstract class Group implements GroupInterface
      *
      * @return Group
      */
-    public function setName($name)
+    public function setName($name): Group
     {
         $this->name = $name;
 
@@ -98,12 +98,12 @@ abstract class Group implements GroupInterface
      *
      * @return bool
      */
-    public function hasRole($role)
+    public function hasRole($role): bool
     {
         return \in_array(mb_strtoupper($role), $this->roles, true);
     }
 
-    public function getRoles()
+    public function getRoles(): array
     {
         return $this->roles;
     }
@@ -113,7 +113,7 @@ abstract class Group implements GroupInterface
      *
      * @return Group
      */
-    public function removeRole($role)
+    public function removeRole($role): Group
     {
         if (false !== $key = array_search(mb_strtoupper($role), $this->roles, true)) {
             unset($this->roles[$key]);

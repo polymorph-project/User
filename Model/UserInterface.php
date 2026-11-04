@@ -20,12 +20,12 @@ interface UserInterface extends BaseUserInterface
      *
      * @return self
      */
-    public function setUsername(string $username);
+    public function setUsername(string $username): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Gets the canonical username in search and sort queries.
      *
-     * @return string
+     * @return string|null
      */
     public function getSlug(): ?string;
 
@@ -34,35 +34,35 @@ interface UserInterface extends BaseUserInterface
      *
      * @return self
      */
-    public function setSlug(string $slug);
+    public function setSlug(string $slug): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Gets email.
      *
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string;
 
     /**
      * Gets the plain password.
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlainPassword();
+    public function getPlainPassword(): ?string;
 
     /**
      * Sets the plain password.
      *
      * @return self
      */
-    public function setPlainPassword(string $password);
+    public function setPlainPassword(string $password): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Sets the hashed password.
      *
      * @return self
      */
-    public function setPassword(string $password);
+    public function setPassword(string $password): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Tells if the the given user has the super admin role.
@@ -72,42 +72,42 @@ interface UserInterface extends BaseUserInterface
     /**
      * @return self
      */
-    public function setEnabled(bool $boolean);
+    public function setEnabled(bool $boolean): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Sets the locking status of the user.
      *
      * @return self
      */
-    public function setLocked(bool $boolean);
+    public function setLocked(bool $boolean): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Sets the super admin status.
      *
      * @return self
      */
-    public function setSuperAdmin(bool $boolean);
+    public function setSuperAdmin(bool $boolean): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Gets the confirmation token.
      *
-     * @return string
+     * @return string|null
      */
-    public function getConfirmationToken();
+    public function getConfirmationToken(): ?string;
 
     /**
      * Sets the confirmation token.
      *
      * @return self
      */
-    public function setConfirmationToken(string $confirmationToken);
+    public function setConfirmationToken(string $confirmationToken): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Sets the timestamp that the user requested a password reset.
      *
      * @return self
      */
-    public function setPasswordRequestedAt(?\DateTimeInterface $date = null);
+    public function setPasswordRequestedAt(?\DateTimeInterface $date = null): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Checks whether the password reset request has expired.
@@ -116,7 +116,7 @@ interface UserInterface extends BaseUserInterface
      *
      * @return bool true if the user's password request is non expired, false otherwise
      */
-    public function isPasswordRequestNonExpired($ttl);
+    public function isPasswordRequestNonExpired($ttl): bool;
 
     /**
      * Sets the last login time.
@@ -125,7 +125,7 @@ interface UserInterface extends BaseUserInterface
      *
      * @return self
      */
-    public function setLastLogin(?\DateTimeInterface $time = null);
+    public function setLastLogin(?\DateTimeInterface $time = null): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Never use this to check if this user has access to anything!
@@ -144,19 +144,19 @@ interface UserInterface extends BaseUserInterface
      *
      * @return self
      */
-    public function setRoles(array $roles);
+    public function setRoles(array $roles): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Adds a role to the user.
      *
      * @return self
      */
-    public function addRole(string $role);
+    public function addRole(string $role): \Polymorph\Component\User\Model\UserInterface;
 
     /**
      * Removes a role to the user.
      *
      * @return self
      */
-    public function removeRole(string $role);
+    public function removeRole(string $role): \Polymorph\Component\User\Model\UserInterface;
 }

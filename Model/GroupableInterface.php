@@ -35,19 +35,19 @@ interface GroupableInterface
      *
      * @return bool
      */
-    public function hasGroup(string $name);
+    public function hasGroup(string $name): bool;
 
     /**
      * Add a group to the user groups.
      *
      * @return self
      */
-    public function addGroup(GroupInterface $group);
+    public function addGroup(GroupInterface $group): \Polymorph\Component\User\Model\GroupableInterface;
 
     /**
      * Remove a group from the user groups.
      *
      * @return self
      */
-    public function removeGroup(GroupInterface $group);
+    public function removeGroup(GroupInterface $group): \Polymorph\Component\User\Model\GroupableInterface;
 }

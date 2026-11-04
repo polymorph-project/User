@@ -30,7 +30,7 @@ abstract class Email
         $this->createdAt = new \DateTimeImmutable();
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -64,7 +64,7 @@ abstract class Email
         return $this;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
