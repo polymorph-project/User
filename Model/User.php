@@ -153,7 +153,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this->id;
     }
 
-    public function addRole(string $role): \Polymorph\Component\User\Model\UserInterface
+    public function addRole(string $role): UserInterface
     {
         $role = mb_strtoupper($role);
 
@@ -191,7 +191,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this->salt;
     }
 
-    public function addEmail(Email $email)
+    public function addEmail(Email $email): void
     {
         if (!$this->emails->contains($email)) {
             if ($email->isMain()) {
@@ -226,8 +226,6 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
 
     /**
      * Gets the encrypted password.
-     *
-     * @return string
      */
     public function getPassword(): ?string
     {
@@ -241,8 +239,6 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
 
     /**
      * Gets the last login time.
-     *
-     * @return \DateTime
      */
     public function getLastLogin(): ?\DateTime
     {
@@ -342,7 +338,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this->hasRole(static::ROLE_SUPER_ADMIN);
     }
 
-    public function removeRole(string $role): \Polymorph\Component\User\Model\UserInterface
+    public function removeRole(string $role): UserInterface
     {
         if (false !== $key = array_search(mb_strtoupper($role), $this->roles, true)) {
             unset($this->roles[$key]);
@@ -352,14 +348,14 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function setUsername(string $username): \Polymorph\Component\User\Model\UserInterface
+    public function setUsername(string $username): UserInterface
     {
         $this->username = $username;
 
         return $this;
     }
 
-    public function setSlug(string $slug): \Polymorph\Component\User\Model\UserInterface
+    public function setSlug(string $slug): UserInterface
     {
         $this->slug = $slug;
 
@@ -371,9 +367,6 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this->slug;
     }
 
-    /**
-     * @param \DateTimeInterface $date
-     */
     public function setCredentialsExpireAt(?\DateTimeInterface $date = null): self
     {
         $this->credentialsExpireAt = $date;
@@ -407,7 +400,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     /**
      * {@inheritdoc}
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -420,7 +413,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this->updatedAt;
     }
 
-    public function setEnabled(bool $boolean): \Polymorph\Component\User\Model\UserInterface
+    public function setEnabled(bool $boolean): UserInterface
     {
         $this->enabled = (bool) $boolean;
 
@@ -434,10 +427,8 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
 
     /**
      * Sets this user to expired.
-     *
-     * @return User
      */
-    public function setExpired(bool $boolean): User
+    public function setExpired(bool $boolean): self
     {
         $this->expired = $boolean;
 
@@ -446,17 +437,15 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
 
     /**
      * @param \DateTime $date
-     *
-     * @return User
      */
-    public function setExpiresAt(?\DateTimeInterface $date = null): User
+    public function setExpiresAt(?\DateTimeInterface $date = null): self
     {
         $this->expiresAt = $date;
 
         return $this;
     }
 
-    public function setPassword(string $password): \Polymorph\Component\User\Model\UserInterface
+    public function setPassword(string $password): UserInterface
     {
         $this->password = $password;
 
@@ -470,7 +459,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function setSuperAdmin(bool $boolean): \Polymorph\Component\User\Model\UserInterface
+    public function setSuperAdmin(bool $boolean): UserInterface
     {
         if ($boolean) {
             $this->addRole(static::ROLE_SUPER_ADMIN);
@@ -481,35 +470,35 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function setPlainPassword(string $password): \Polymorph\Component\User\Model\UserInterface
+    public function setPlainPassword(string $password): UserInterface
     {
         $this->plainPassword = $password;
 
         return $this;
     }
 
-    public function setLastLogin(?\DateTimeInterface $time = null): \Polymorph\Component\User\Model\UserInterface
+    public function setLastLogin(?\DateTimeInterface $time = null): UserInterface
     {
         $this->lastLogin = $time;
 
         return $this;
     }
 
-    public function setLocked(bool $boolean): \Polymorph\Component\User\Model\UserInterface
+    public function setLocked(bool $boolean): UserInterface
     {
         $this->locked = $boolean;
 
         return $this;
     }
 
-    public function setConfirmationToken(string $confirmationToken): \Polymorph\Component\User\Model\UserInterface
+    public function setConfirmationToken(string $confirmationToken): UserInterface
     {
         $this->confirmationToken = $confirmationToken;
 
         return $this;
     }
 
-    public function setPasswordRequestedAt(?\DateTimeInterface $date = null): \Polymorph\Component\User\Model\UserInterface
+    public function setPasswordRequestedAt(?\DateTimeInterface $date = null): UserInterface
     {
         $this->passwordRequestedAt = $date;
 
@@ -526,11 +515,11 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
 
     public function isPasswordRequestNonExpired($ttl): bool
     {
-        return $this->getPasswordRequestedAt() instanceof \DateTimeInterface &&
-        $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
+        return $this->getPasswordRequestedAt() instanceof \DateTimeInterface
+        && $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
-    public function setRoles(array $roles): \Polymorph\Component\User\Model\UserInterface
+    public function setRoles(array $roles): UserInterface
     {
         $this->roles = [];
 
@@ -564,7 +553,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return \in_array($name, $this->getGroupNames(), true);
     }
 
-    public function addGroup(GroupInterface $group): \Polymorph\Component\User\Model\GroupableInterface
+    public function addGroup(GroupInterface $group): GroupableInterface
     {
         if (!$this->getGroups()->contains($group)) {
             $this->getGroups()->add($group);
@@ -573,7 +562,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function removeGroup(GroupInterface $group): \Polymorph\Component\User\Model\GroupableInterface
+    public function removeGroup(GroupInterface $group): GroupableInterface
     {
         if ($this->getGroups()->contains($group)) {
             $this->getGroups()->removeElement($group);

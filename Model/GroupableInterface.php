@@ -32,22 +32,16 @@ interface GroupableInterface
      * Indicates whether the user belongs to the specified group or not.
      *
      * @param string $name Name of the group
-     *
-     * @return bool
      */
     public function hasGroup(string $name): bool;
 
     /**
      * Add a group to the user groups.
-     *
-     * @return self
      */
-    public function addGroup(GroupInterface $group): \Polymorph\Component\User\Model\GroupableInterface;
+    public function addGroup(GroupInterface $group): self;
 
     /**
      * Remove a group from the user groups.
-     *
-     * @return self
      */
-    public function removeGroup(GroupInterface $group): \Polymorph\Component\User\Model\GroupableInterface;
+    public function removeGroup(GroupInterface $group): self;
 }

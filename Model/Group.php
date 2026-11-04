@@ -59,10 +59,8 @@ abstract class Group implements GroupInterface
 
     /**
      * @param string $role
-     *
-     * @return Group
      */
-    public function addRole($role): Group
+    public function addRole($role): self
     {
         if (!$this->hasRole($role)) {
             $this->roles[] = mb_strtoupper($role);
@@ -83,10 +81,8 @@ abstract class Group implements GroupInterface
 
     /**
      * @param string $name
-     *
-     * @return Group
      */
-    public function setName($name): Group
+    public function setName($name): self
     {
         $this->name = $name;
 
@@ -95,8 +91,6 @@ abstract class Group implements GroupInterface
 
     /**
      * @param string $role
-     *
-     * @return bool
      */
     public function hasRole($role): bool
     {
@@ -110,10 +104,8 @@ abstract class Group implements GroupInterface
 
     /**
      * @param string $role
-     *
-     * @return Group
      */
-    public function removeRole($role): Group
+    public function removeRole($role): self
     {
         if (false !== $key = array_search(mb_strtoupper($role), $this->roles, true)) {
             unset($this->roles[$key]);

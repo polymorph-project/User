@@ -19,49 +19,29 @@ interface GroupInterface
 {
     /**
      * @param string $role
-     *
-     * @return self
      */
-    public function addRole($role): \Polymorph\Component\User\Model\GroupInterface;
+    public function addRole($role): self;
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string;
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string;
 
     /**
      * @param string $role
-     *
-     * @return bool
      */
     public function hasRole($role): bool;
 
-    /**
-     * @return array
-     */
     public function getRoles(): array;
 
     /**
      * @param string $role
-     *
-     * @return self
      */
-    public function removeRole($role): \Polymorph\Component\User\Model\GroupInterface;
+    public function removeRole($role): self;
 
     /**
      * @param string $name
-     *
-     * @return self
      */
-    public function setName($name): \Polymorph\Component\User\Model\GroupInterface;
+    public function setName($name): self;
 
-    /**
-     * @return self
-     */
-    public function setRoles(array $roles): \Polymorph\Component\User\Model\GroupInterface;
+    public function setRoles(array $roles): self;
 }
