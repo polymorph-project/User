@@ -14,7 +14,7 @@ namespace Polymorph\Component\User\Model;
 /**
  * @author Mlanawo Mbechezi <nawo@polymorph.org>
  */
-abstract class Group implements GroupInterface
+abstract class Group implements GroupInterface, \Stringable
 {
     /**
      * @var int
@@ -25,11 +25,6 @@ abstract class Group implements GroupInterface
      * @var string
      */
     protected $name;
-
-    /**
-     * @var array
-     */
-    protected $roles;
 
     /**
      * @var array
@@ -46,13 +41,15 @@ abstract class Group implements GroupInterface
      */
     protected $updatedAt;
 
-    public function __construct($roles = [])
+    /**
+     * @param mixed[] $roles
+     */
+    public function __construct(protected $roles = [])
     {
         $this->createdAt = new \DateTimeImmutable();
-        $this->roles = $roles;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name;
     }

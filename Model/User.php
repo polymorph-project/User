@@ -20,7 +20,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  *
  * @author Mlanawo Mbechezi <mlanawo.mbechezi@kemeter.io>
  */
-abstract class User implements UserInterface, GroupableInterface, PasswordAuthenticatedUserInterface
+abstract class User implements UserInterface, GroupableInterface, PasswordAuthenticatedUserInterface, \Stringable
 {
     public const ROLE_DEFAULT = 'ROLE_USER';
     public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
@@ -415,7 +415,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
 
     public function setEnabled(bool $boolean): UserInterface
     {
-        $this->enabled = (bool) $boolean;
+        $this->enabled = $boolean;
 
         return $this;
     }
@@ -571,7 +571,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->getUsername();
     }

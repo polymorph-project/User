@@ -16,16 +16,14 @@ abstract class Email
     protected $id;
     protected \DateTimeInterface $createdAt;
     protected bool $main;
-    protected string $email;
 
     /**
      * @var User
      */
     protected $user;
 
-    public function __construct(string $email = '')
+    public function __construct(protected string $email = '')
     {
-        $this->email = $email;
         $this->main = false;
         $this->createdAt = new \DateTimeImmutable();
     }
