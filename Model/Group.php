@@ -17,7 +17,7 @@ namespace Polymorph\Component\User\Model;
 abstract class Group implements GroupInterface, \Stringable
 {
     /**
-     * @var int
+     * @var string|null
      */
     protected $id;
 
