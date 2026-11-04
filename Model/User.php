@@ -374,7 +374,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     /**
      * @param \DateTimeInterface $date
      */
-    public function setCredentialsExpireAt(\DateTimeInterface $date = null): self
+    public function setCredentialsExpireAt(?\DateTimeInterface $date = null): self
     {
         $this->credentialsExpireAt = $date;
 
@@ -449,7 +449,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
      *
      * @return User
      */
-    public function setExpiresAt(\DateTimeInterface $date = null)
+    public function setExpiresAt(?\DateTimeInterface $date = null)
     {
         $this->expiresAt = $date;
 
@@ -488,7 +488,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function setLastLogin(\DateTimeInterface $time = null)
+    public function setLastLogin(?\DateTimeInterface $time = null)
     {
         $this->lastLogin = $time;
 
@@ -509,7 +509,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
         return $this;
     }
 
-    public function setPasswordRequestedAt(\DateTimeInterface $date = null)
+    public function setPasswordRequestedAt(?\DateTimeInterface $date = null)
     {
         $this->passwordRequestedAt = $date;
 

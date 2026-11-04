@@ -12,22 +12,18 @@
         },
         {
             "name": "Polymorph Community",
-          "homepage": "http://github.com/polymorph-project/polymorph/contributors"
+            "homepage": "http://github.com/polymorph-project/polymorph/contributors"
         }
     ],
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "doctrine/collections": "*",
         "symfony/security": "*"
     },
-
     "autoload": {
-        "psr-4": { "Polymorph\\Component\\User\\": "" }
-    },
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.8-dev"
+        "psr-4": {
+            "Polymorph\\Component\\User\\": ""
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
