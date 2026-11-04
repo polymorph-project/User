@@ -475,6 +475,8 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     public function setPlainPassword(string $password): UserInterface
     {
         $this->plainPassword = $password;
+        // plainPassword is not persisted: touch a mapped field so the change is flushed and hashed
+        $this->updatedAt = new \DateTime();
 
         return $this;
     }
