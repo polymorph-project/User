@@ -26,7 +26,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     public const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
     /**
-     * @var int
+     * @var string|null
      */
     protected $id;
 
@@ -72,7 +72,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     protected $plainPassword;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface|null
      */
     protected $lastLogin;
 
@@ -84,7 +84,7 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     protected $confirmationToken;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface|null
      */
     protected $passwordRequestedAt;
 
@@ -109,12 +109,12 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
     protected $expiresAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface|null
      */
     protected $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface|null
      */
     protected $updatedAt;
 
@@ -204,6 +204,8 @@ abstract class User implements UserInterface, GroupableInterface, PasswordAuthen
                 $email->setMain(true);
             }
 
+            // owning side of the relation, otherwise the email is stored without its user
+            $email->setUser($this);
             $this->emails->add($email);
         }
     }
