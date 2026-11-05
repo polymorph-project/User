@@ -17,8 +17,8 @@
     ],
     "require": {
         "php": ">=8.4",
-        "doctrine/collections": "*",
-        "symfony/security": "*"
+        "doctrine/collections": "^2.0",
+        "symfony/security-core": "^7.4"
     },
     "autoload": {
         "psr-4": {
